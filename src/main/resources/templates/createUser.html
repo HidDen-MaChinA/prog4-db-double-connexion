@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/cssandjs/All.css">
+    <link rel="stylesheet" href="/cssandjs/styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav th:replace="navbar.html :: navigation"></nav>
+    <form th:action="@{/create}" th:object="${newUser}" enctype="multipart/form-data" method="post">
+        <article class="my-3 container" id="input-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="input10" class="form-label">userName</label>
+                    <input type="text" class="form-control" th:field="*{userName}" id="input10" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="input09" class="form-label">password</label>
+                    <input type="text" class="form-control" th:field="*{password}" id="input09" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+        <button class="btn btn-info col-3 offset-9 submit-button">submit</button>
+        </article>
+    </form>
+</body>
+
+</html>

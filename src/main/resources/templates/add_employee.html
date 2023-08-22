@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/cssandjs/All.css">
+    <link rel="stylesheet" href="/cssandjs/styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav th:replace="navbar.html :: navigation"></nav>
+    <form th:action="@{/save}" th:object="${employee}" enctype="multipart/form-data" method="post">
+        <article class="my-3 container" id="input-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="input10" class="form-label">First name</label>
+                    <input type="text" class="form-control" th:field="*{firstName}" id="input10" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="input09" class="form-label">Last name</label>
+                    <input type="text" class="form-control" th:field="*{lastName}" id="input09" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="input07" class="form-label">Birth date</label>
+                    <input type="date" class="form-control" th:field="*{birthDate}" id="input07" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="customFile">Photo</label>
+                <input type="file" class="form-control" th:field="*{photo}" id="customFile">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="customFile">Sex</label>
+                <select class="form-select" th:field="*{sex}" aria-label=".form-select-lg example">
+                    <option th:value="H" selected>Homme</option>
+                    <option th:value="F">Femme</option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="input04" class="form-label">Phone number (add "," for multiple phone number)</label>
+                    <input type="text" class="form-control" th:field="*{phoneNumber}" id="input04" value="Mark" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <select class="form-select" th:field="*{countryCode}" aria-label=".form-select-lg example">
+                        <tr th:each="country :${countryCode}">
+                            <option th:value="${country.id}" selected><td th:text="${country.code}"/></option>
+                        </tr>
+                    </select>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label for="input06" class="form-label">CIN number</label>
+                    <input type="text" class="form-control" id="input06" th:field="*{cinNumber}" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-6">
+                    <label for="input11" class="form-label">CIN creation date</label>
+                    <input type="date" class="form-control" id="input11" th:field="*{cinCreationDate}" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <label for="input12" class="form-label">Address</label>
+                <input type="text" class="form-control" id="input12" th:field="*{address}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="input01" class="form-label">Email perso</label>
+                    <input type="email" class="form-control" th:field="*{emailPerso}" id="input01" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="input02" class="form-label">Email pro</label>
+                    <input type="email" class="form-control" th:field="*{emailPro}" id="input02" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="input13" class="form-label">Date Entrer</label>
+                        <input type="date" class="form-control" id="input13" th:field="*{date_entre}" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-6">
+                <label for="input03" class="form-label">Cnaps</label>
+                <input type="text" class="form-control" th:field="*{cnaps}" id="input03" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+        <button class="btn btn-info col-3 offset-9 submit-button">submit</button>
+        </article>
+    </form>
+</body>
+
+</html>

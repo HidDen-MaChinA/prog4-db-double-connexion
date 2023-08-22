@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/cssandjs/bootstrap.js"></script>
+    <link rel="stylesheet" href="/cssandjs/All.css">
+    <link rel="stylesheet" href="/cssandjs/styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <form class="col-8 form-search" th:object="${searchEmployee}" th:action="@{/employees}">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                        <label>firstname</label>
+                        <input class="form-control input-style" th:field="*{firstName}" type="search" placeholder="Firstname" aria-label="Search">
+                        <label>lastname</label>
+                        <input class="form-control input-style" th:field="*{lastName}" type="search" placeholder="Lastname" aria-label="Search">
+                        <label>birthday</label>
+                        <input class="form-control input-style" th:field="*{birthday}" type="date" placeholder="Lastname" aria-label="Search">
+                        <label>sex</label>
+                        <select class="form-select" th:field="*{sex}" aria-label=".form-select-lg example">
+                            <option value="" selected></option>
+                            <option th:value="H">Homme</option>
+                            <option th:value="F">Femme</option>
+                        </select>
+                        <label>Entrance date From</label>
+                        <input class="form-control input-style" th:field="*{start.from}" type="date" placeholder="Lastname" aria-label="Search">
+                        <label>to</label>
+                        <input class="form-control input-style" th:field="*{start.to}" type="date" placeholder="Lastname" aria-label="Search">
+                        <label>leaving date From</label>
+                        <input class="form-control input-style" th:field="*{end.from}" type="date" placeholder="Lastname" aria-label="Search">
+                        <label>to</label>
+                        <input class="form-control input-style" th:field="*{end.to}" type="date" placeholder="Lastname" aria-label="Search">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<nav class="navbar navbar-expand-sm navbar-dark navigation-css" aria-label="Third navbar example">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Reborn</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
+                aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+            </ul>
+            <a th:href="@{/addEmployee}">Create Employee</a>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Launch static backdrop modal
+            </button>
+        </div>
+    </div>
+</nav>
+<main class="container-xxl overflow-auto list-style">
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Firstname</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">BirthDate</th>
+                <th scope="col">Sex</th>
+                <th scope="col">address</th>
+                <th scope="col">Email perso</th>
+                <th scope="col">Email pro</th>
+                <th scope="col">Cin number</th>
+                <th scope="col">Cin creation date</th>
+                <th scope="col">Cnaps</th>
+                <th scope="col">Entrance date</th>
+                <th scope="col">Leaving date</th>
+                <th scope="col">phoneNumber</th>
+                <th scope="col">#</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="employee :${value}">
+                <th scope="row" th:text="${employee.matricule}"></th>
+                <td th:text="${employee.firstName}"></td>
+                <td th:text="${employee.lastName}"></td>
+                <td th:text="${employee.birthDate}"></td>
+                <td th:text="${employee.sex}"></td>
+                <td th:text="${employee.address}"></td>
+                <td th:text="${employee.emailPerso}"></td>
+                <td th:text="${employee.emailPro}"></td>
+                <td th:text="${employee.cinNumber}"></td>
+                <td th:text="${employee.cinCreationDate}"></td>
+                <td th:text="${employee.cnaps}"></td>
+                <td th:text="${employee.date_entre}"></td>
+                <td th:text="${employee.date_sortie}"></td>
+                <td th:each="phoneNumber :${employee.phoneNumberList}">
+                    <span th:text="${phoneNumber.countryCode.code} + ${phoneNumber.value}"></span>
+                </td>
+                <td><a th:href="@{/user/{matricule}(matricule = ${employee.matricule})}">detail</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+
+</html>

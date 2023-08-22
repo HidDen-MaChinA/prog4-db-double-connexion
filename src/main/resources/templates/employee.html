@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/cssandjs/All.css">
+    <link rel="stylesheet" href="/cssandjs/styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+<nav th:replace="navbar.html :: navigation"></nav>
+<main class="container">
+        <img th:src="@{'data:image/*;base64,'+${user.photo}}"/>
+        <article class="my-3 container" id="input-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="form-label lead"><strong>Firstname</strong></label>
+                    <div>
+                        <p class="lead"><td th:text="${user.firstName}"/></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label lead"><strong>Lastname</strong></label>
+                    <div>
+                        <p class="lead"><td th:text="${user.lastName}"/></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label lead"><strong>Birthdate</strong></label>
+                    <div>
+                        <p class="lead"><td th:text="${user.birthDate}"/></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label lead"><strong>SEX</strong></label>
+                <div>
+                    <p class="lead"><td th:text="${user.sex}"/></p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label lead"><strong>CIN Number</strong></label>
+                <div>
+                    <p class="lead"><td th:text="${user.cinNumber}"/></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="form-label lead"><strong>Email perso</strong></label>
+                    <div>
+                        <p class="lead"><td th:text="${user.emailPerso}"/></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label lead"><strong>Email pro</strong></label>
+                    <div>
+                        <p class="lead"><td th:text="${user.emailPro}"/></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label lead"><strong>fonction</strong></label>
+                <div>
+                    <tr th:each="function :${user.functionList}">
+                        <p class="lead"><td th:text="${function.name}"/></p>
+                    </tr>
+                </div>
+            </div>
+            <div>
+                <label class="form-label lead"><strong>cnaps</strong></label>
+                <div>
+                    <p class="lead"><td th:text="${user.cnaps}"/></p>
+                </div>
+            </div>
+            <div>
+                <label class="form-label lead"><strong>role</strong></label>
+                <div>
+                    <p class="lead"><td th:text="${user.role}"/></p>
+                </div>
+            </div>
+        </article>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+:root{
+    --background:#461959;
+    --color:#f4f4ff;
+    --hover:#982176;
+    --button-bg:rgba(16, 18, 107, 0.952);
+}
+.navigation-css{
+    background-color:var(--background);
+}
+.button-color{
+    background-color:rgba(0, 0, 0, 0);
+    color: var(--color) !important;
+    border-color:var(--color)!important;
+}
+.button-color:hover{
+    background-color:white;
+    color:black
+}
+.form-search{
+    display: flex;
+    flex-direction: row;
+}
+.form-search select{
+    width: 60%;
+}
+.list-style{
+    max-height:90vh;
+}
