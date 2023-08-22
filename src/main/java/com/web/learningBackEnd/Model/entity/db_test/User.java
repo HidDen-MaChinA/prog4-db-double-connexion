@@ -3,7 +3,7 @@ package com.web.learningBackEnd.Model.entity.db_test;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity(name = "\"User\"")
+@Entity(name = "\"user\"")
 @Getter
 @Builder
 @Setter

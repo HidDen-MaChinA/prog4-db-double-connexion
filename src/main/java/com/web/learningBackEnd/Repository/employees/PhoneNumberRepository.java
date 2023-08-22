@@ -1,6 +1,7 @@
 package com.web.learningBackEnd.Repository.employees;
 
 import com.web.learningBackEnd.Model.entity.db_test.PhoneNumber;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -11,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-@EnableJpaRepositories(entityManagerFactoryRef = "employeeDb")
+@Qualifier("EMFactoryEmployee")
 public interface PhoneNumberRepository extends JpaRepository<PhoneNumber,String> {
     List<PhoneNumber> getPhoneNumbersByValue(String value);
     @Modifying

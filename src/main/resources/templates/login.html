@@ -5,14 +5,33 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/cssandjs/All.css">
+    <link rel="stylesheet" href="/cssandjs/styles.css">
     <title>Document</title>
 </head>
 <body>
-    <form class="col-8 form-group" th:object="${userDetails}" th:action="@{/authentify}">
-        <input class="form-control input-style" th:field="*{userName}" type="text" placeholder="User name" aria-label="Search">
-        <input class="form-control input-style" th:field="*{password}" type="password" placeholder="Password" aria-label="Search">
-        <button class="btn col-sm-2 button-color ms-1" type="submit">Login</button>
-    </form>
-    <a th:href="@{/createUser}">Create User</a>
+<nav th:replace="navbar.html :: navigation"></nav>
+<form th:object="${userDetails}" th:action="@{/authentify}" method="post">
+    <article class="my-3 container" id="input-group">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="input10" class="form-label">userName</label>
+                <input type="text" class="form-control" th:field="*{userName}" id="input10" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="input09" class="form-label">password</label>
+                <input type="text" class="form-control" th:field="*{password}" id="input09" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <button class="btn btn-info col-3 offset-9 submit-button">Login</button>
+        </div>
+    </article>
+</form>
+</nav>
 </body>
 </html>
