@@ -17,6 +17,6 @@ public interface PhoneNumberRepository extends JpaRepository<PhoneNumber,String>
     List<PhoneNumber> getPhoneNumbersByValue(String value);
     @Modifying
     @Transactional
-    @Query(value = "update phone_number set user_id = :id where id = :phoneNumberId",nativeQuery = true)
+    @Query(value = "update phonenumber set user_id = :id where id = :phoneNumberId",nativeQuery = true)
     void setEmployee(String id,String phoneNumberId);
 }

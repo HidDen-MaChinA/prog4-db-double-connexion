@@ -39,17 +39,17 @@ public class CustomRepositoryForFilteringImpl implements CustomRepositoryForFilt
         };
         IfWithCondition(
                 lastName!=null,
-                ()->{output.append("last_name like '%").append(lastName).append("%'");},
+                ()->{output.append("lastname like '%").append(lastName).append("%'");},
                 before
         );
         IfWithCondition(
                 firstName!=null,
-                ()->{output.append("first_name like '%").append(firstName).append("%'");},
+                ()->{output.append("firstname like '%").append(firstName).append("%'");},
                 before
         );
         IfWithCondition(
                 birthday!=null,
-                ()->{output.append("birth_date = '").append(birthday).append("'");},
+                ()->{output.append("birthdate = '").append(birthday).append("'");},
                 before
         );
         IfWithCondition(
@@ -60,12 +60,12 @@ public class CustomRepositoryForFilteringImpl implements CustomRepositoryForFilt
         IfWithCondition(
                 start!=null,
                 ()->{
-                    output.append("date_entre BETWEEN '").append(start.getFrom()).append("' AND '").append(start.getTo()).append("'");},
+                    output.append("dateentre BETWEEN '").append(start.getFrom()).append("' AND '").append(start.getTo()).append("'");},
                 before
         );
         IfWithCondition(
                 end!=null,
-                ()->{output.append("date_entre BETWEEN '").append(end.getFrom()).append("' AND '").append(end.getTo()).append("'");},
+                ()->{output.append("dateentre BETWEEN '").append(end.getFrom()).append("' AND '").append(end.getTo()).append("'");},
                 before
         );
 

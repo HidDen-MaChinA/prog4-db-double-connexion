@@ -1,0 +1,10 @@
+--CREATE VIEW combined_view AS
+--SELECT
+--    t1.id AS table1_id,
+--    t1.name AS table1_name,
+--    t2.id AS table2_id,
+--    t2.description AS table2_description
+--FROM
+--    public.table1 t1
+--JOIN
+--    db2.schema2.table2 t2 ON t1.id = t2.id;

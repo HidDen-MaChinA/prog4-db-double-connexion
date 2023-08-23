@@ -11,7 +11,7 @@
 </head>
 <body>
 <nav th:replace="navbar.html :: navigation"></nav>
-<form th:object="${userDetails}" th:action="@{/authentify}" method="post">
+<form th:object="${userDetails}" th:action="@{/authentify}" method="get">
     <article class="my-3 container" id="input-group">
         <div class="row">
             <div class="col-md-4">

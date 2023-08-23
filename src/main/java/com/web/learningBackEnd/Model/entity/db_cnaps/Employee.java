@@ -2,10 +2,7 @@ package com.web.learningBackEnd.Model.entity.db_cnaps;
 
 import com.web.learningBackEnd.Model.entity.db_test.PhoneNumber;
 import com.web.learningBackEnd.Model.entity.db_test.Section;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Date;
