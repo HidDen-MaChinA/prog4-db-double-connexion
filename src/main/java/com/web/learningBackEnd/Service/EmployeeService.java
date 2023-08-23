@@ -54,7 +54,7 @@ public class EmployeeService {
             @Nullable String birthday,
             @Nullable DatePlage start,
             @Nullable DatePlage end,
-            @Nullable Employee.SEX sex
+            @Nullable Integer sex
             ){
         return customRepositoryForFiltering.filterEmployee(CountryCode,lastName,firstName,birthday,start,end,sex).stream().map(mapper::toRest).toList();
     }

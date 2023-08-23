@@ -11,5 +11,5 @@ import java.util.List;
 
 @Qualifier("EMFactoryEmployee")
 public interface CustomRepositoryForFiltering {
-    List<Employee> filterEmployee(String country_code, String lastName, String firstName, String birthday, DatePlage start, DatePlage leave, Employee.SEX sex);
+    List<Employee> filterEmployee(String country_code, String lastName, String firstName, String birthday, DatePlage start, DatePlage leave, Integer sex);
 }

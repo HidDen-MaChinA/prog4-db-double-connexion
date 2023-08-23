@@ -36,7 +36,7 @@ public class test {
             @Nullable @RequestParam("birthday") String birthday,
             @Nullable @RequestParam("start") DatePlage start,
             @Nullable @RequestParam("end") DatePlage end,
-            @Nullable @RequestParam("sex") Employee.SEX sex
+            @Nullable @RequestParam("sex") Integer sex
     ){
         return custom.filterEmployee("asd",lastName,firstName,birthday,start,end,sex);
     }

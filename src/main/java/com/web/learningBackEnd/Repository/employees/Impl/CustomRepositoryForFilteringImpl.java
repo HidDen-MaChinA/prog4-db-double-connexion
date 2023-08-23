@@ -19,16 +19,26 @@ public class CustomRepositoryForFilteringImpl implements CustomRepositoryForFilt
     private EntityManager entityManager;
 
     @Override
-    public List<Employee> filterEmployee(String country_code, String lastName, String firstName, String birthday, DatePlage start, DatePlage end, Employee.SEX sex) {
+    public List<Employee> filterEmployee(String country_code, String lastName, String firstName, String birthday, DatePlage start, DatePlage end, Integer sex) {
         String MyQuery = this.createSuitableQueryForFiltering(country_code,lastName,firstName,birthday,start,end,sex);
         Query query = entityManager.createNativeQuery(MyQuery, Employee.class);
+        if(sex!=null){
+            query.setParameter("sex",sex);
+        }
         List<Employee> employees = query.getResultList();
         return employees;
     }
-    private String createSuitableQueryForFiltering(String country_code, String lastName, String firstName, String birthday, DatePlage start, DatePlage end, Employee.SEX sex){
-        StringBuilder output = new StringBuilder("SELECT * FROM employee WHERE ");
+    private String createSuitableQueryForFiltering(String country_code, String lastName, String firstName, String birthday, DatePlage start, DatePlage end, Integer sex){
         AtomicBoolean added = new AtomicBoolean(false);
-        System.out.println(firstName);
+        StringBuilder output = new StringBuilder();
+        System.out.println(country_code);
+        if(country_code!=null){
+            output.append("SELECT e.* FROM employee e JOIN phonenumber p on e.id=p.user_id JOIN countrycode c on p.countrycode_id=c.id WHERE c.code ='").append(country_code).append("'");
+            added.set(true);
+            System.out.println("different de null");
+        }else {
+            output.replace(0,output.length(),"SELECT e.* FROM employee e WHERE ");
+        }
         ConditionBlock before = ()->{
             if(added.get()){
                 output.append(" AND ");
@@ -54,7 +64,7 @@ public class CustomRepositoryForFilteringImpl implements CustomRepositoryForFilt
         );
         IfWithCondition(
                 sex!=null,
-                ()->{output.append("sex = '").append(sex.name()).append("'");},
+                ()->{output.append("sex = :sex");},
                 before
         );
         IfWithCondition(

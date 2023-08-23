@@ -31,8 +31,8 @@
                         <label>sex</label>
                         <select class="form-select" th:field="*{sex}" aria-label=".form-select-lg example">
                             <option value="" selected></option>
-                            <option th:value="H">Homme</option>
-                            <option th:value="F">Femme</option>
+                            <option th:value="0">Homme</option>
+                            <option th:value="1">Femme</option>
                         </select>
                         <label>Entrance date From</label>
                         <input class="form-control input-style" th:field="*{start.from}" type="date" placeholder="Lastname" aria-label="Search">
@@ -42,7 +42,14 @@
                         <input class="form-control input-style" th:field="*{end.from}" type="date" placeholder="Lastname" aria-label="Search">
                         <label>to</label>
                         <input class="form-control input-style" th:field="*{end.to}" type="date" placeholder="Lastname" aria-label="Search">
-                </div>
+                        <label>countryCode</label>
+                            <select class="form-select" th:field="*{countryCode}" aria-label=".form-select-lg example">
+                                <option value="" selected></option>
+                                <tr th:each="code :${codes}">
+                                    <option th:value="${code}" th:text="${code}"></option>
+                                </tr>
+                            </select>
+                    </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Filter</button>
@@ -111,7 +118,7 @@
                 <td th:text="${employee.date_entre}"></td>
                 <td th:text="${employee.date_sortie}"></td>
                 <td th:each="phoneNumber :${employee.phoneNumberList}">
-                    <span th:text="${phoneNumber.countryCode.code} + ${phoneNumber.value}"></span>
+                    <span th:text="${phoneNumber.countryCode.code}"/><span th:text="${phoneNumber.value}"/>
                 </td>
                 <td><a th:href="@{/user/{matricule}(matricule = ${employee.matricule})}">detail</a></td>
             </tr>

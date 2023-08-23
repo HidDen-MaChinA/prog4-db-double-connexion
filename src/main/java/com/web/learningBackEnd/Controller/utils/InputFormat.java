@@ -5,6 +5,7 @@ import com.web.learningBackEnd.Model.request.DatePlage;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.intellij.lang.annotations.Pattern;
 
 @Getter
 @Setter
@@ -13,8 +14,10 @@ public class InputFormat {
     private String firstName;
     private String lastName;
     private String birthday;
+    private String countryCode;
     private DatePlage start;
     private DatePlage end;
+    private Integer sex;
 
     public void clean() {
         this.firstName = checker(firstName);
@@ -22,7 +25,8 @@ public class InputFormat {
         this.birthday = checker(birthday);
         this.start = checker(start);
         this.end = checker(end);
-        this.sex = null;
+        this.countryCode = checker(countryCode);
+        this.sex = sex;
     }
     private String checker(String input){
         try{
@@ -31,6 +35,7 @@ public class InputFormat {
             return null;
         }
     }
+
     private DatePlage checker(DatePlage input){
         try{
             return input.getFrom().toString().isEmpty() || input.getTo().toString().isEmpty() ? null : input;
@@ -38,9 +43,8 @@ public class InputFormat {
             return null;
         }
     }
-    private Employee.SEX sex;
 
     public boolean IsEmpty(){
-        return firstName == null && lastName == null && start == null && end == null && birthday == null;
+        return firstName == null && lastName == null && start == null && end == null && birthday == null && countryCode == null && sex == null;
     }
 }

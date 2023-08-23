@@ -48,8 +48,9 @@ public class EmployeeController {
         searchBy.clean();
         InputFormat search = new InputFormat();
         model.addAttribute("searchEmployee",search);
+        model.addAttribute("codes",countryCodeRepository.findAll().stream().map(code->code.getCode()).toList());
         if(!searchBy.IsEmpty()){
-            model.addAttribute("value",service.filterEmployee("test",searchBy.getLastName(),searchBy.getFirstName(),searchBy.getBirthday(),searchBy.getStart(),searchBy.getEnd(),searchBy.getSex()));
+            model.addAttribute("value",service.filterEmployee(searchBy.getCountryCode(),searchBy.getLastName(),searchBy.getFirstName(),searchBy.getBirthday(),searchBy.getStart(),searchBy.getEnd(), searchBy.getSex()));
             return "employees";
         }
         model.addAttribute("value",service.getAll());
