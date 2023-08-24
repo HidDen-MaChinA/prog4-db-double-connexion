@@ -1,5 +1,6 @@
 package com.web.learningBackEnd.Service.facade;
 
+import com.lowagie.text.DocumentException;
 import com.web.learningBackEnd.Controller.utils.InputFormat;
 import com.web.learningBackEnd.Controller.utils.UserInformation;
 import com.web.learningBackEnd.Mapper.UserInformationMapper;
@@ -13,8 +14,11 @@ import jakarta.servlet.http.HttpSession;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.w3c.dom.Document;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
 
@@ -27,4 +31,5 @@ public interface EmployeeManagementFacade {
     RequestedEmployee getEmployeeDetails(String matricule);
     CountryCodeRepository getcountryCodeInstance();
     User authentifyUser(HttpSession input);
+    void getPdf(String user, OutputStream outputStream) throws DocumentException;
 }

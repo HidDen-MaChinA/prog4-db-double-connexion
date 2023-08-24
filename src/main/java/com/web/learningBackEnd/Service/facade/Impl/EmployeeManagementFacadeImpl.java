@@ -1,15 +1,18 @@
 package com.web.learningBackEnd.Service.facade.Impl;
 
+import com.lowagie.text.DocumentException;
 import com.web.learningBackEnd.Controller.utils.InputFormat;
 import com.web.learningBackEnd.Controller.utils.UserInformation;
 import com.web.learningBackEnd.Mapper.EmployeeMapper;
 import com.web.learningBackEnd.Mapper.UserInformationMapper;
+import com.web.learningBackEnd.Model.entity.db_test.Employee;
 import com.web.learningBackEnd.Model.entity.db_test.User;
 import com.web.learningBackEnd.Model.request.RequestedEmployee;
 import com.web.learningBackEnd.Model.request.SaveEmployee;
 import com.web.learningBackEnd.Model.request.UserLogin;
 import com.web.learningBackEnd.Repository.employees.CountryCodeRepository;
 import com.web.learningBackEnd.Service.EmployeeService;
+import com.web.learningBackEnd.Service.PDFGeneratingService;
 import com.web.learningBackEnd.Service.SecurityService;
 import com.web.learningBackEnd.Service.facade.EmployeeManagementFacade;
 import jakarta.servlet.http.HttpSession;
@@ -20,8 +23,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.Document;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
 @AllArgsConstructor
@@ -33,6 +39,7 @@ public class EmployeeManagementFacadeImpl implements EmployeeManagementFacade {
     private final SecurityService security;
     private final EmployeeMapper employeeMapper;
     private final CountryCodeRepository countryCodeRepository;
+    private final PDFGeneratingService pdfGeneratingService;
     private final UserInformationMapper userInformationMapper;
     @Override
     @Primary
@@ -84,5 +91,15 @@ public class EmployeeManagementFacadeImpl implements EmployeeManagementFacade {
     @Override
     public User authentifyUser(HttpSession input) {
         return security.AuthentifyUser(input);
+    }
+
+    @Override
+    public void getPdf(String matricule, OutputStream outputStream) throws DocumentException {
+        System.out.println("arrived int the facade");
+        RequestedEmployee employee = service.getEmployeeByMatricule(matricule);
+        System.out.println("the employee is here : "+employee.getFirstName());
+        String html = pdfGeneratingService.parseThymeleafTemplate(employee);
+        System.out.println(html);
+        pdfGeneratingService.generatePdfFromHtml(html,outputStream);
     }
 }

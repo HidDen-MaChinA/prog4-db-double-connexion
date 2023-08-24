@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/cssandjs/All.css">
-    <link rel="stylesheet" href="/cssandjs/styles.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/cssandjs/All.css" />
+    <link rel="stylesheet" href="/cssandjs/styles.css" />
     <title>Document</title>
 </head>
 
@@ -60,24 +60,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <label class="form-label lead"><strong>fonction</strong></label>
-                <div>
-                    <tr th:each="function :${user.functionList}">
-                        <p class="lead"><td th:text="${function.name}"/></p>
-                    </tr>
-                </div>
-            </div>
             <div>
                 <label class="form-label lead"><strong>cnaps</strong></label>
                 <div>
                     <p class="lead"><td th:text="${user.cnaps}"/></p>
-                </div>
-            </div>
-            <div>
-                <label class="form-label lead"><strong>role</strong></label>
-                <div>
-                    <p class="lead"><td th:text="${user.role}"/></p>
                 </div>
             </div>
         </article>
