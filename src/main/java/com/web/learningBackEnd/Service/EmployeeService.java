@@ -18,16 +18,10 @@ import java.util.List;
 @Service
 @Getter
 @Setter
+@AllArgsConstructor
 public class EmployeeService {
     private final EmployeeRepository repository;
     private final EmployeeMapper mapper;
-    @Autowired
-    public EmployeeService(EmployeeRepository repository, EmployeeMapper mapper, PhoneNumberService phoneNumberService, CustomRepositoryForFiltering customRepositoryForFiltering) {
-        this.repository = repository;
-        this.mapper = mapper;
-        this.phoneNumberService = phoneNumberService;
-        this.customRepositoryForFiltering = customRepositoryForFiltering;
-    }
 
     private final PhoneNumberService phoneNumberService;
     private final CustomRepositoryForFiltering customRepositoryForFiltering;

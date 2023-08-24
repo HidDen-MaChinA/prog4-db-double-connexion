@@ -7,7 +7,7 @@ import lombok.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SaveUserInformation {
+public class UserLogin {
     private String userName;
     private String password;
 }

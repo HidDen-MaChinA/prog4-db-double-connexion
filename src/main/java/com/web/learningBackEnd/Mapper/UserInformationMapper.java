@@ -2,7 +2,7 @@ package com.web.learningBackEnd.Mapper;
 
 import com.web.learningBackEnd.Model.entity.db_test.User;
 import com.web.learningBackEnd.Model.request.RequestedUserInformation;
-import com.web.learningBackEnd.Model.request.SaveUserInformation;
+import com.web.learningBackEnd.Model.request.UserLogin;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +15,7 @@ import java.util.UUID;
 @Getter
 @Setter
 public class UserInformationMapper {
-    public User toEntity(SaveUserInformation input){
+    public User toEntity(UserLogin input){
         return User.builder()
                 .password(input.getPassword())
                 .username(input.getUserName())
