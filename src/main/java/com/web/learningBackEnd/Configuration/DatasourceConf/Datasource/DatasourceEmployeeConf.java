@@ -1,4 +1,4 @@
-package com.web.learningBackEnd.Configuration.DatasourceConf;
+package com.web.learningBackEnd.Configuration.DatasourceConf.Datasource;
 
 
 import jakarta.persistence.EntityManagerFactory;
