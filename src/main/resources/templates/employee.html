@@ -4,67 +4,112 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/cssandjs/All.css" />
-    <link rel="stylesheet" href="/cssandjs/styles.css" />
+    <link rel="stylesheet" href="/cssandjs/All.css">
+    <link rel="stylesheet" href="/cssandjs/styles.css">
     <title>Document</title>
 </head>
 
 <body>
-<nav th:replace="navbar.html :: navigation"></nav>
+<nav class="navbar navbar-expand-sm navbar-dark navigation-css" th:fragment="navigation" aria-label="Third navbar example">
+    <div class="container-fluid d-flex justify-content-space-between">
+        <a class="navbar-brand" href="#">Reborn</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
+                aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <a th:href="@{/employee/pdf/{matricule}(matricule = ${employee.matricule})}">PDF</a>
+        </div>
+    </div>
+</nav>
 <main class="container">
-        <img th:src="@{'data:image/*;base64,'+${user.photo}}"/>
+        <img th:src="@{'data:image/*;base64,'+${employee.photo}}"/>
         <article class="my-3 container" id="input-group">
             <div class="row">
                 <div class="col-md-4">
                     <label class="form-label lead"><strong>Firstname</strong></label>
                     <div>
-                        <p class="lead"><td th:text="${user.firstName}"/></p>
+                        <p class="lead"><td th:text="${employee.firstName}"/></p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <label class="form-label lead"><strong>Lastname</strong></label>
                     <div>
-                        <p class="lead"><td th:text="${user.lastName}"/></p>
+                        <p class="lead"><td th:text="${employee.lastName}"/></p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <label class="form-label lead"><strong>Birthdate</strong></label>
                     <div>
-                        <p class="lead"><td th:text="${user.birthDate}"/></p>
+                        <p class="lead"><td th:text="${employee.birthDate}"/></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <label class="form-label lead"><strong>SEX</strong></label>
                 <div>
-                    <p class="lead"><td th:text="${user.sex}"/></p>
+                    <p class="lead"><td th:text="${employee.sex}"/></p>
                 </div>
             </div>
             <div class="col-md-3">
                 <label class="form-label lead"><strong>CIN Number</strong></label>
                 <div>
-                    <p class="lead"><td th:text="${user.cinNumber}"/></p>
+                    <p class="lead"><td th:text="${employee.cinNumber}"/></p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label lead"><strong>CIN creationDate</strong></label>
+                <div>
+                    <p class="lead"><td th:text="${employee.cinCreationDate}"/></p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <label class="form-label lead"><strong>Email perso</strong></label>
                     <div>
-                        <p class="lead"><td th:text="${user.emailPerso}"/></p>
+                        <p class="lead"><td th:text="${employee.emailPerso}"/></p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <label class="form-label lead"><strong>Email pro</strong></label>
                     <div>
-                        <p class="lead"><td th:text="${user.emailPro}"/></p>
+                        <p class="lead"><td th:text="${employee.emailPro}"/></p>
                     </div>
                 </div>
             </div>
             <div>
                 <label class="form-label lead"><strong>cnaps</strong></label>
                 <div>
-                    <p class="lead"><td th:text="${user.cnaps}"/></p>
+                    <p class="lead"><td th:text="${employee.cnaps}"/></p>
                 </div>
+            </div>
+            <div>
+                <label class="form-label lead"><strong>Entrance date</strong></label>
+                <div>
+                    <p class="lead"><td th:text="${employee.date_entre}"/></p>
+                </div>
+            </div>
+            <div>
+                <label class="form-label lead"><strong>Leaving date</strong></label>
+                <div>
+                    <p class="lead"><td th:text="${employee.date_sortie}"/></p>
+                </div>
+            </div>
+            <div>
+                <label class="form-label lead"><strong>phone numbers</strong></label>
+                <td th:each="phoneNumber :${employee.phoneNumberList}">
+                    <div>
+                        <span th:text="${phoneNumber.countryCode.code}"/><span th:text="${phoneNumber.value}"/>
+                    </div>
+                </td>
             </div>
         </article>
     </main>

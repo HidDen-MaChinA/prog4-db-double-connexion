@@ -18,7 +18,7 @@
     <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Filter Employee</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -72,10 +72,12 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
             </ul>
-            <a th:href="@{/addEmployee}">Create Employee</a>
+            <button type="button" class="btn btn-primary" >
+                <a th:href="@{/addEmployee}" class="text-white">Create Employee</a>
+            </button>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Launch static backdrop modal
+                Filter
             </button>
         </div>
     </div>
@@ -120,7 +122,7 @@
                 <td th:each="phoneNumber :${employee.phoneNumberList}">
                     <span th:text="${phoneNumber.countryCode.code}"/><span th:text="${phoneNumber.value}"/>
                 </td>
-                <td><a th:href="@{/user/{matricule}(matricule = ${employee.matricule})}">detail</a></td>
+                <td><a th:href="@{/employee/{matricule}(matricule = ${employee.matricule})}">detail</a></td>
             </tr>
             </tbody>
         </table>

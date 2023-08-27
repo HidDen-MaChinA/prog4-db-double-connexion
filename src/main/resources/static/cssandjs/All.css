@@ -4,6 +4,9 @@
     --hover:#982176;
     --button-bg:rgba(16, 18, 107, 0.952);
 }
+a{
+    text-decoration:none;
+}
 .navigation-css{
     background-color:var(--background);
 }

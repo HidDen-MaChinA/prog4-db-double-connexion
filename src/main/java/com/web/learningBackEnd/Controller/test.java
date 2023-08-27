@@ -48,8 +48,4 @@ public class test {
     ){
         return custom.filterEmployee("asd",lastName,firstName,birthday,start,end,sex);
     }
-    @GetMapping("/pdf/{employee}")
-    public void getPdf(@PathVariable String employee, HttpServletResponse response) throws DocumentException,IOException {
-     facade.getPdf(employee,response.getOutputStream());
-    }
 }

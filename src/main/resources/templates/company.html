@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/cssandjs/All.css">
+    <link rel="stylesheet" href="/cssandjs/styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav th:replace="navbar.html :: navigation"></nav>
+    <form th:action="@{/company/save}" th:object="${company}" enctype="multipart/form-data" method="post">
+        <article class="my-3 container" id="input-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="input10" class="form-label">Company Name</label>
+                    <input type="text" class="form-control" th:field="*{companyName}" id="input10" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="input09" class="form-label">Company Slogan</label>
+                    <input type="text" class="form-control" th:field="*{companySlogan}" id="input09" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                <label for="input0" class="form-label">Company nif</label>
+                <input type="text" class="form-control" th:field="*{nif}" id="input0" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="input04" class="form-label">Company stat</label>
+                <input type="text" class="form-control" th:field="*{stat}" id="input04" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="input01" class="form-label">Company number</label>
+                <input type="text" class="form-control" th:field="*{number}" id="input01" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+                <div class="col-md-4">
+                    <label for="input02" class="form-label">Company email</label>
+                    <input type="text" class="form-control" th:field="*{address}" id="input02" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="input06" class="form-label">Company email</label>
+                    <input type="email" class="form-control" th:field="*{email}" id="input06" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            <div class="mb-3">
+                <label class="form-label" for="customFile">Logo</label>
+                <input type="file" class="form-control" th:field="*{companyLogo}" id="customFile">
+            </div>
+            </div>
+        </article>
+        <button class="btn btn-info col-3 offset-9 submit-button">submit</button>
+    </form>
+</body>
+
+</html>

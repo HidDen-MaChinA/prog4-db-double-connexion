@@ -19,6 +19,7 @@ import org.w3c.dom.Document;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
 import java.util.List;
 
 
@@ -31,5 +32,5 @@ public interface EmployeeManagementFacade {
     RequestedEmployee getEmployeeDetails(String matricule);
     CountryCodeRepository getcountryCodeInstance();
     User authentifyUser(HttpSession input);
-    void getPdf(String user, OutputStream outputStream) throws DocumentException;
+    void getPdf(String user, OutputStream outputStream) throws DocumentException, MalformedURLException;
 }

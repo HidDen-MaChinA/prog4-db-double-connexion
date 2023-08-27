@@ -25,6 +25,7 @@ public class Employee {
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<PhoneNumber> phonenumber;
     private String emailPerso;
+    private int brutSalary;
     private String emailPro;
     private String cinNumber;
     private Date dateEntre;

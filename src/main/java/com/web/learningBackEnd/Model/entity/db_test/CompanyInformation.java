@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -11,6 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Data
 @AllArgsConstructor
+@Builder
 @NoArgsConstructor
 public class CompanyInformation {
     @Id
@@ -18,4 +20,9 @@ public class CompanyInformation {
     private String companyName;
     private String companySlogan;
     private byte[] companyLogo;
+    private String nif;
+    private String number;
+    private String stat;
+    private String address;
+    private String email;
 }

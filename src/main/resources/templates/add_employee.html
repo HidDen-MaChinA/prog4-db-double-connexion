@@ -101,19 +101,36 @@
             </div>
                 <div class="row">
                     <div class="col-6">
-                        <label for="input13" class="form-label">Date Entrer</label>
+                        <label for="input13" class="form-label">Date embauch</label>
                         <input type="date" class="form-control" id="input13" th:field="*{date_entre}" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                     </div>
+                    <div class="col-6">
+                        <label for="input15" class="form-label">Date depart</label>
+                        <input type="date" class="form-control" id="input15" th:field="*{date_sortie}" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
                 </div>
-            <div class="col-md-6">
-                <label for="input03" class="form-label">Cnaps</label>
-                <input type="text" class="form-control" th:field="*{cnaps}" id="input03" required>
-                <div class="valid-feedback">
-                    Looks good!
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="input03" class="form-label">Cnaps</label>
+                    <input type="text" class="form-control" th:field="*{cnaps}" id="input03" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
                 </div>
+                <div class="col-md-6">
+                    <label for="input14" class="form-label">salary</label>
+                    <input type="number" class="form-control" th:field="*{brutSalary}" id="input14" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
             </div>
         <button class="btn btn-info col-3 offset-9 submit-button">submit</button>
         </article>

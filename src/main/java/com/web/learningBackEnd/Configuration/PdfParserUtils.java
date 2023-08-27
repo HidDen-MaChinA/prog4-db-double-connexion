@@ -15,7 +15,7 @@ public class PdfParserUtils implements ApplicationContextAware {
         templateEngine = applicationContext.getBean(TemplateEngine.class);
     }
 
-    public  String processTemplate(String templateName, Context context) {
+    public String processTemplate(String templateName, Context context) {
         return templateEngine.process(templateName, context);
     }
 }

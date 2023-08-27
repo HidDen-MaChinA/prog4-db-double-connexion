@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="styles">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" th:href="@{cssandjs/styles.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{cssandjs/All.css}" />
+    <title>Document</title>
+    <style>
+        .title{
+            width:100%;
+            position:relative;
+        }
+        .image{
+            width:200px;
+            height:200px;
+            border-radius:10px;
+            overflow:hidden;
+            left:0;
+        }
+        .details{
+            position:absolute;
+            right:5%;
+            width:50%;
+        }
+        .information{
+            width:100%;
+            position:relative;
+        }
+        .salary{
+            width:100%;
+        }
+        .show-salary{
+            padding-left:20px;
+            padding-top:5px
+        }
+        footer{
+            width:100%;
+            position:absolute;
+            bottom:0;
+            display:block
+        }
+        body{
+            height:700px;
+            border:1px solid black;
+            padding:100px;
+        }
+        footer::before{
+            content:'';
+            display:block;
+            height:2px;
+            border-radius:10px;
+            background-color:black;
+            margin-left:15%;
+            width:70%;
+        }
+        .footer-data-1{
+            top:30%;
+            width:30%;
+            display:inline-block;
+            position:absolute;
+            left:40%;
+        }
+        .logo{
+            width:35%;
+            display:inline-block
+
+        }
+        .footer-data-2{
+            top:30%;
+            right:0;
+            width:30%;
+            display:inline-block;
+            position:absolute
+        }
+    </style>
+</head>
+
+<body>
+        <div class="information">
+            <span class="image">
+                <img th:src="@{'data:image/*;base64,'+${user.photo}}" width="200px" height="200px"/>
+            </span>
+            <span class="details">
+                <h2>FICHE EMPLOYEE</h2>
+                <div>Matricule : <span th:text="${user.matricule}"/></div>
+                <div>Nom : <span th:text="${user.firstName}"/></div>
+                <div>prenom : <span th:text="${user.lastName}"/></div>
+                <div>age : <span th:text="${user.age}"/></div>
+                <div>date d'embauche : <span th:text="${user.date_entre}"/></div>
+                <div>date de depart : <span th:text="${user.date_sortie}"/></div>
+                <div>cnaps : <span th:text="${user.cnaps}"/></div>
+            </span>
+        </div>
+        <main class="salary">
+            <p>Information sur le salaire</p>
+            <div class="show-salary">Salaire brut actuel : <span th:text="${user.bruSalary}"/> Ariary / mois</div>
+        </main>
+        <footer>
+            <span class="logo"><img th:src="@{'data:image/*;base64,'+${company.companyLogo}}" width="200px" height="200px"/></span>
+            <span class="footer-data-1">
+                <strong><span th:text="${company.companyName}"/></strong>
+                <div>Nif : <span th:text="${company.nif}"/></div>
+                <div>Stat: <span th:text="${company.stat}"/></div>
+            </span>
+            <span class="footer-data-2">
+                <div>Address : <span th:text="${company.address}"/></div>
+                <div>Numero: <span th:text="${company.number}"/></div>
+                <div>Email : <span th:text="${company.email}"/></div>
+            </span>
+        </footer>
+</body>
+
+</html>

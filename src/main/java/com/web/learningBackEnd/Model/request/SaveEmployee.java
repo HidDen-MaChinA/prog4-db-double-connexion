@@ -11,12 +11,14 @@ import org.springframework.web.multipart.MultipartFile;
 @Builder
 public class SaveEmployee {
     private String firstName;
+    private int brutSalary;
     private String lastName;
     private String birthDate;
     private MultipartFile photo;
     private Employee.SEX sex;
     private String countryCode;
     private String date_entre;
+    private String date_sortie;
     private String address;
     private String phoneNumber;
     private String emailPerso;
